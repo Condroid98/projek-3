@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-landing
+  namespace: production
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+  - host: landing.cupu69.xyz
+    http: 
+      paths:
+      - backend:
+          serviceName: landing-page
+          servicePort: 80
