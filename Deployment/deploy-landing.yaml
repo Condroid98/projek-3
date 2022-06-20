@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: landing-page
+  namespace: staging
+spec:	
+  selector:
+    matchLabels:
+      app: landing-page
+  template:
+    metadata:
+      labels:
+        app: landing-page
+    spec:
+      imagePullSecrets:
+      - name: dockerhub-private
+      containers:
+      - name: landing-page
+        image: hiro99/landing-page:0.0.1-stg
+        ports:
+        - containerPort: 80

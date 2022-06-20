@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php-pesbuk
+  namespace: staging
+spec:
+  selector:
+    matchLabels:
+      app: pesbuk
+  template:
+    metadata:
+      labels:
+        app: pesbuk
+    spec:
+      containers:
+      - name: pesbuk
+        image: hiro99/pesbuk:0.0.1-stg
+        ports:
+        - containerPort: 80
+        env:
+          - name: DB_HOST
+            value: ""
+          - name: DB_USER
+            valueFrom:
+              secretKeyRef:
+                name: p-secret-fb
+                key: DB_USER
+          - name: DB_PASS
+            valueFrom:
+              secretKeyRef:
+                name: p-secret-fb
+                key: DB_PASS
