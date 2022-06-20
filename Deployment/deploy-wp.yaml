@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: wordpress
-  namespace: staging
+  namespace: production
 spec:
   selector:
     matchLabels:
@@ -17,7 +17,7 @@ spec:
         image: wordpress:5.8.3-php7.4-apache
         env:
         - name: WORDPRESS_DB_HOST
-          value: service-mysql-wp.staging.svc.cluster.local
+          value: service-mysql.production.svc.cluster.local
         - name: WORDPRESS_DB_PASSWORD
           valueFrom:
             secretKeyRef:

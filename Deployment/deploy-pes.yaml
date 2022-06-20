@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: php-pesbuk
-  namespace: staging
+  namespace: production
 spec:
   selector:
     matchLabels:
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: pesbuk
-        image: hiro99/pesbuk:0.0.1-stg
+        image: hiro99/pesbuk:0.0.1-prod
         ports:
         - containerPort: 80
         env:
